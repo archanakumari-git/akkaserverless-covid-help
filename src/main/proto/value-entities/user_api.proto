@@ -1,0 +1,68 @@
+// This is the public API offered by your entity.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "akkaserverless/annotations.proto";
+import "google/api/annotations.proto";
+
+package pom;
+
+option java_outer_classname = "UserApi";
+
+message RegisteredUser {
+  string user_id = 1 [(akkaserverless.field).entity_key = true];
+  string first_name = 2;
+  string last_name = 3;
+  string address = 4;
+  string location_coordinates = 5;
+  string phone_number = 6;
+  string email_id = 7;
+  string user_type = 8;
+  string sub_type = 9 ;
+}
+
+message UpdatedUser {
+  string user_id = 1 [(akkaserverless.field).entity_key = true];
+  string first_name = 2;
+  string last_name = 3;
+  string address = 4;
+  string location_coordinates = 5;
+  string phone_number = 6;
+  string email_id = 7;
+  string user_type = 8;
+  string sub_type = 9 ;
+}
+
+message DeletedUser {
+  string user_id = 1 [(akkaserverless.field).entity_key = true];
+}
+
+message UserLogin {
+  string user_id = 1 [(akkaserverless.field).entity_key = true];
+  string first_name = 2;
+  string last_name = 3;
+  string address = 4;
+  string location_coordinates = 5;
+  string phone_number = 6;
+  string email_id = 7;
+  string user_type = 8;
+  string sub_type = 9 ;
+}
+
+message CurrentUser {
+  string first_name = 2;
+  string last_name = 3;
+  string phone_number = 6;
+}
+
+service UserService {
+  option (akkaserverless.service) = {
+    type : SERVICE_TYPE_ENTITY
+    component : ".domain.User"
+  };
+
+  rpc RegisterUser(RegisteredUser) returns (google.protobuf.Empty);
+  rpc UpdateUser(UpdatedUser) returns (google.protobuf.Empty);
+  rpc DeleteUser(DeletedUser) returns (google.protobuf.Empty);
+  rpc LoginUser(UserLogin) returns (CurrentUser);
+}
