@@ -40,5 +40,9 @@ service CounterService {
     rpc Increase(IncreaseValue) returns (google.protobuf.Empty);
     rpc Decrease(DecreaseValue) returns (google.protobuf.Empty);
     rpc Reset(ResetValue) returns (google.protobuf.Empty);
-    rpc GetCurrentCounter(GetCounter) returns (CurrentCounter);
+    rpc GetCurrentCounter(GetCounter) returns (CurrentCounter){
+        option (google.api.http) = {
+            get: "/counter/{counter_id}"
+        };
+    };
 }

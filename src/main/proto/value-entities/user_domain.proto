@@ -22,4 +22,5 @@ message UserState {
   string email_id = 7;
   string user_type = 8;
   string sub_type = 9 ;
+  string password = 10;
 }
