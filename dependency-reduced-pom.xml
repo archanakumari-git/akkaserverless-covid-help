@@ -4,7 +4,7 @@
   <groupId>com.bct.ind</groupId>
   <artifactId>akkaserverless-covid-help</artifactId>
   <name>akkaserverless-covid-help</name>
-  <version>1.0</version>
+  <version>2.0</version>
   <build>
     <extensions>
       <extension>
@@ -159,9 +159,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
         <configuration>
-          <excludes>
-            <exclude>**/*IntegrationTest</exclude>
-          </excludes>
+          <excludes />
         </configuration>
       </plugin>
       <plugin>
